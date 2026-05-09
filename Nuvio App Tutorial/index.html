@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuvio Apps - Setup Tutorial</title>
+    <style>
+        /* CSS: This section styles the website to make it look nice */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-width: 600px; /* Slightly wider to fit long links */
+            width: 100%;
+            text-align: center;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        /* Style for the steps to hide them by default */
+        .step {
+            display: none; 
+        }
+        /* Show the active step */
+        .step.active {
+            display: block;
+        }
+        /* Button styles */
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .btn-secondary {
+            background-color: #95a5a6;
+        }
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+        }
+        .btn-success {
+            background-color: #27ae60;
+        }
+        .btn-success:hover {
+            background-color: #219653;
+        }
+        /* Styles for individual links in Step 3 */
+        .link-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .link-group input {
+            flex-grow: 1;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-family: monospace;
+            font-size: 12px;
+            margin-right: 10px;
+            background-color: #f9f9f9;
+        }
+        .link-group button {
+            margin: 0;
+            padding: 10px 15px;
+            font-size: 14px;
+            white-space: nowrap;
+            min-width: 80px;
+        }
+        /* Code boxes for Step 4 JSON */
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-family: monospace;
+            font-size: 12px;
+            resize: none;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+            word-break: break-all;
+        }
+        /* Checklist styles */
+        .navigation-steps {
+            text-align: left;
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+        .checklist {
+            text-align: left;
+            margin: 20px 0;
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        .checklist label {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 15px;
+            cursor: pointer;
+            padding: 8px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+        .checklist label:hover {
+            background-color: #f1f1f1;
+        }
+        .checklist input {
+            margin-right: 10px;
+        }
+        .status-enabled { color: #27ae60; font-weight: bold; }
+        .status-disabled { color: #e74c3c; font-weight: bold; }
+        .highlight-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- STEP 1: Installation Check -->
+    <div id="step1" class="step active">
+        <h2>Step 1: Installation</h2>
+        <p>Welcome to the Nuvio Setup Tutorial! First things first, have you already installed the Nuvio App on your device?</p>
+        <button onclick="goToStep(2)">Yes, I have</button>
+        <button class="btn-secondary" onclick="window.location.href='https://nuvioapp.space'">No, take me to nuvioapp.space</button>
+    </div>
+
+    <!-- STEP 2: Login Check -->
+    <div id="step2" class="step">
+        <h2>Step 2: Login / Registration</h2>
+        <p>Great! Now, please open the app. Have you registered an account and logged in to the Nuvio App?</p>
+        <p><em>If not, please do so now before proceeding.</em></p>
+        <button class="btn-secondary" onclick="goToStep(1)">Back</button>
+        <button onclick="goToStep(3)">Yes, I'm logged in (Next)</button>
+    </div>
+
+    <!-- STEP 3: Addon Setup -->
+    <div id="step3" class="step">
+        <h2>Step 3: Addon Setup Tutorial</h2>
+        <p>Please copy the links below <b>one by one</b> and paste them into the Addon section in your Nuvio app.</p>
+        
+        <div class="link-group"><input type="text" id="link1" value="https://subdl.strem.top/UW5zTlQwX2tZNVZOR2VvZWFob0VELVZXdHdvVW51N0YvRU4sTVMsSUQvaGlJbmNsdWRlLw/manifest.json" readonly><button onclick="copyToClipboard('link1', this)">Copy</button></div>
+        <div class="link-group"><input type="text" id="link2" value="https://hdhub.thevolecitor.qzz.io/eyJ0b3Jib3giOiJ1bnNldCIsInF1YWxpdGllcyI6IjIxNjBwLDEwODBwIiwic29ydCI6ImRlc2MiLCJjb250ZW50IjoiYXNpYW4ifQ/manifest.json" readonly><button onclick="copyToClipboard('link2', this)">Copy</button></div>
+        <div class="link-group"><input type="text" id="link3" value="https://torrentio.strem.fun/manifest.json" readonly><button onclick="copyToClipboard('link3', this)">Copy</button></div>
+        <div class="link-group"><input type="text" id="link4" value="https://aiometadatafortheweebs.midnightignite.me/stremio/cfdf99a3-0895-4140-9d40-6bbcba29ab5f/manifest.json" readonly><button onclick="copyToClipboard('link4', this)">Copy</button></div>
+        <div class="link-group"><input type="text" id="link5" value="https://thepiratebay-plus.strem.fun/manifest.json" readonly><button onclick="copyToClipboard('link5', this)">Copy</button></div>
+        <div class="link-group"><input type="text" id="link6" value="https://83e20802dcf1-kdramacrush.baby-beamup.club/manifest.json" readonly><button onclick="copyToClipboard('link6', this)">Copy</button></div>
+
+        <br>
+        <button class="btn-secondary" onclick="goToStep(2)">Back</button>
+        <button onclick="goToStep(4)">Next</button>
+    </div>
+
+    <!-- STEP 4: Collection Setup -->
+    <div id="step4" class="step">
+        <h2>Step 4: Collection Setup Tutorial</h2>
+        <p>Next, copy the JSON configuration below and paste it into the Collection Settings inside the app.</p>
+        
+        <textarea id="jsonText" readonly>[{"id":"collection-c1645ace","title":"Series by Genre","folders":[{"id":"folder-066ce7c0","title":"Action & Adventure","sources":[{"type":"series","genre":"Action & Adventure","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.nfx","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Action & Adventure","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.dnp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Action & Adventure","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.atp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Action & Adventure","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.amp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Action & Adventure","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.pmp","mediaType":null,"traktListId":null,"tmdbSourceType":null}],"hideTitle":true,"tileShape":"LANDSCAPE","coverEmoji":"","focusGifUrl":"","heroVideoUrl":"","titleLogoUrl":"","coverImageUrl":"https://raw.githubusercontent.com/itsrenoria/fusion-starter-kit/refs/heads/main/resources/widgets/genres/wide/dannyrutledge/action-adventures-wide.png","catalogSources":[{"type":"series","genre":"Action & Adventure","addonId":"aio-metadata","catalogId":"streaming.nfx"},{"type":"series","genre":"Action & Adventure","addonId":"aio-metadata","catalogId":"streaming.dnp"},{"type":"series","genre":"Action & Adventure","addonId":"aio-metadata","catalogId":"streaming.atp"},{"type":"series","genre":"Action & Adventure","addonId":"aio-metadata","catalogId":"streaming.amp"},{"type":"series","genre":"Action & Adventure","addonId":"aio-metadata","catalogId":"streaming.pmp"}],"focusGifEnabled":false,"heroBackdropUrl":""},{"id":"folder-b54e45d6","title":"Animation","sources":[{"type":"series","genre":"Animation","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.nfx","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Animation","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.dnp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Animation","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.atp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Animation","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.amp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Animation","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.pmp","mediaType":null,"traktListId":null,"tmdbSourceType":null}],"hideTitle":true,"tileShape":"LANDSCAPE","coverEmoji":"","focusGifUrl":"","heroVideoUrl":"","titleLogoUrl":"","coverImageUrl":"https://raw.githubusercontent.com/itsrenoria/fusion-starter-kit/refs/heads/main/resources/widgets/genres/wide/dannyrutledge/animation-wide.png","catalogSources":[{"type":"series","genre":"Animation","addonId":"aio-metadata","catalogId":"streaming.nfx"},{"type":"series","genre":"Animation","addonId":"aio-metadata","catalogId":"streaming.dnp"},{"type":"series","genre":"Animation","addonId":"aio-metadata","catalogId":"streaming.atp"},{"type":"series","genre":"Animation","addonId":"aio-metadata","catalogId":"streaming.amp"},{"type":"series","genre":"Animation","addonId":"aio-metadata","catalogId":"streaming.pmp"}],"focusGifEnabled":true,"heroBackdropUrl":""},{"id":"folder-9e6e566f","title":"Comedy","sources":[{"type":"series","genre":"Comedy","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.nfx","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Comedy","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.dnp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Comedy","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.atp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Comedy","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.amp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Comedy","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.pmp","mediaType":null,"traktListId":null,"tmdbSourceType":null}],"hideTitle":true,"tileShape":"LANDSCAPE","coverEmoji":"","focusGifUrl":"","heroVideoUrl":"","titleLogoUrl":"","coverImageUrl":"https://raw.githubusercontent.com/itsrenoria/fusion-starter-kit/refs/heads/main/resources/widgets/genres/wide/dannyrutledge/comedy-wide.png","catalogSources":[{"type":"series","genre":"Comedy","addonId":"aio-metadata","catalogId":"streaming.nfx"},{"type":"series","genre":"Comedy","addonId":"aio-metadata","catalogId":"streaming.dnp"},{"type":"series","genre":"Comedy","addonId":"aio-metadata","catalogId":"streaming.atp"},{"type":"series","genre":"Comedy","addonId":"aio-metadata","catalogId":"streaming.amp"},{"type":"series","genre":"Comedy","addonId":"aio-metadata","catalogId":"streaming.pmp"}],"focusGifEnabled":false,"heroBackdropUrl":""},{"id":"folder-b7a5a57e","title":"Crime","sources":[{"type":"series","genre":"Crime","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.nfx","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Crime","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.dnp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Crime","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.atp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Crime","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.amp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Crime","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.pmp","mediaType":null,"traktListId":null,"tmdbSourceType":null}],"hideTitle":true,"tileShape":"LANDSCAPE","coverEmoji":"","focusGifUrl":"","heroVideoUrl":"","titleLogoUrl":"","coverImageUrl":"https://raw.githubusercontent.com/itsrenoria/fusion-starter-kit/refs/heads/main/resources/widgets/genres/wide/dannyrutledge/crime-wide.png","catalogSources":[{"type":"series","genre":"Crime","addonId":"aio-metadata","catalogId":"streaming.nfx"},{"type":"series","genre":"Crime","addonId":"aio-metadata","catalogId":"streaming.dnp"},{"type":"series","genre":"Crime","addonId":"aio-metadata","catalogId":"streaming.atp"},{"type":"series","genre":"Crime","addonId":"aio-metadata","catalogId":"streaming.amp"},{"type":"series","genre":"Crime","addonId":"aio-metadata","catalogId":"streaming.pmp"}],"focusGifEnabled":false,"heroBackdropUrl":""},{"id":"folder-4ff59092","title":"Documentary","sources":[{"type":"series","genre":"Documentary","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.nfx","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Documentary","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.dnp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Documentary","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.atp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Documentary","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.amp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Documentary","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.pmp","mediaType":null,"traktListId":null,"tmdbSourceType":null}],"hideTitle":true,"tileShape":"LANDSCAPE","coverEmoji":"","focusGifUrl":"","heroVideoUrl":"","titleLogoUrl":"","coverImageUrl":"https://raw.githubusercontent.com/itsrenoria/fusion-starter-kit/refs/heads/main/resources/widgets/genres/wide/dannyrutledge/documentary-wide.png","catalogSources":[{"type":"series","genre":"Documentary","addonId":"aio-metadata","catalogId":"streaming.nfx"},{"type":"series","genre":"Documentary","addonId":"aio-metadata","catalogId":"streaming.dnp"},{"type":"series","genre":"Documentary","addonId":"aio-metadata","catalogId":"streaming.atp"},{"type":"series","genre":"Documentary","addonId":"aio-metadata","catalogId":"streaming.amp"},{"type":"series","genre":"Documentary","addonId":"aio-metadata","catalogId":"streaming.pmp"}],"focusGifEnabled":false,"heroBackdropUrl":""},{"id":"folder-c17825a5","title":"Drama","sources":[{"type":"movie","genre":"Drama","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.nfx","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Drama","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.dnp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Drama","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.atp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Drama","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.amp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Drama","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.pmp","mediaType":null,"traktListId":null,"tmdbSourceType":null}],"hideTitle":true,"tileShape":"LANDSCAPE","coverEmoji":"","focusGifUrl":"","heroVideoUrl":"","titleLogoUrl":"","coverImageUrl":"https://raw.githubusercontent.com/itsrenoria/fusion-starter-kit/refs/heads/main/resources/widgets/genres/wide/dannyrutledge/drama-wide.png","catalogSources":[{"type":"movie","genre":"Drama","addonId":"aio-metadata","catalogId":"streaming.nfx"},{"type":"series","genre":"Drama","addonId":"aio-metadata","catalogId":"streaming.dnp"},{"type":"series","genre":"Drama","addonId":"aio-metadata","catalogId":"streaming.atp"},{"type":"series","genre":"Drama","addonId":"aio-metadata","catalogId":"streaming.amp"},{"type":"series","genre":"Drama","addonId":"aio-metadata","catalogId":"streaming.pmp"}],"focusGifEnabled":false,"heroBackdropUrl":""},{"id":"folder-cd2434d5","title":"Family","sources":[{"type":"series","genre":"Family","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.nfx","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Family","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.dnp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"movie","genre":"Family","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.atp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Family","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.amp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Family","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.pmp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Kids","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.nfx","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Kids","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.dnp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Kids","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.atp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Kids","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.amp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Kids","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.pmp","mediaType":null,"traktListId":null,"tmdbSourceType":null}],"hideTitle":true,"tileShape":"LANDSCAPE","coverEmoji":"","focusGifUrl":"","heroVideoUrl":"","titleLogoUrl":"","coverImageUrl":"https://raw.githubusercontent.com/itsrenoria/fusion-starter-kit/refs/heads/main/resources/widgets/genres/wide/dannyrutledge/kids-wide.png","catalogSources":[{"type":"series","genre":"Family","addonId":"aio-metadata","catalogId":"streaming.nfx"},{"type":"series","genre":"Family","addonId":"aio-metadata","catalogId":"streaming.dnp"},{"type":"movie","genre":"Family","addonId":"aio-metadata","catalogId":"streaming.atp"},{"type":"series","genre":"Family","addonId":"aio-metadata","catalogId":"streaming.amp"},{"type":"series","genre":"Family","addonId":"aio-metadata","catalogId":"streaming.pmp"},{"type":"series","genre":"Kids","addonId":"aio-metadata","catalogId":"streaming.nfx"},{"type":"series","genre":"Kids","addonId":"aio-metadata","catalogId":"streaming.dnp"},{"type":"series","genre":"Kids","addonId":"aio-metadata","catalogId":"streaming.atp"},{"type":"series","genre":"Kids","addonId":"aio-metadata","catalogId":"streaming.amp"},{"type":"series","genre":"Kids","addonId":"aio-metadata","catalogId":"streaming.pmp"}],"focusGifEnabled":false,"heroBackdropUrl":""},{"id":"folder-b0edb88d","title":"Mystery","sources":[{"type":"series","genre":"Mystery","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.nfx","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Mystery","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.dnp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Mystery","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.atp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Mystery","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.amp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"Mystery","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.pmp","mediaType":null,"traktListId":null,"tmdbSourceType":null}],"hideTitle":true,"tileShape":"LANDSCAPE","coverEmoji":"","focusGifUrl":"","heroVideoUrl":"","titleLogoUrl":"","coverImageUrl":"https://nuvioapp.space/uploads/covers/5c537c81-e7e0-4626-ae01-81be3c3498e0.png","catalogSources":[{"type":"series","genre":"Mystery","addonId":"aio-metadata","catalogId":"streaming.nfx"},{"type":"series","genre":"Mystery","addonId":"aio-metadata","catalogId":"streaming.dnp"},{"type":"series","genre":"Mystery","addonId":"aio-metadata","catalogId":"streaming.atp"},{"type":"series","genre":"Mystery","addonId":"aio-metadata","catalogId":"streaming.amp"},{"type":"series","genre":"Mystery","addonId":"aio-metadata","catalogId":"streaming.pmp"}],"focusGifEnabled":false,"heroBackdropUrl":""}],"pinToTop":false,"viewMode":"TABBED_GRID","showAllTab":true,"backdropImageUrl":"","focusGlowEnabled":true},{"id":"collection-a59fffc5","title":"Streaming Platform","folders":[{"id":"folder-59681900","title":"Netflix","sources":[{"type":"movie","genre":"None","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.nfx","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"None","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.nfx","mediaType":null,"traktListId":null,"tmdbSourceType":null}],"hideTitle":true,"tileShape":"LANDSCAPE","coverEmoji":"","focusGifUrl":"https://i.pinimg.com/originals/bb/74/04/bb74046420c4c992b8cabc6e667abe40.gif","heroVideoUrl":"","titleLogoUrl":"","coverImageUrl":"","catalogSources":[{"type":"movie","genre":null,"addonId":"aio-metadata","catalogId":"streaming.nfx"},{"type":"series","genre":null,"addonId":"aio-metadata","catalogId":"streaming.nfx"}],"focusGifEnabled":true,"heroBackdropUrl":""},{"id":"folder-07de9c6b","title":"Disney+","sources":[{"type":"movie","genre":"None","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.dnp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"None","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.dnp","mediaType":null,"traktListId":null,"tmdbSourceType":null}],"hideTitle":true,"tileShape":"LANDSCAPE","coverEmoji":"","focusGifUrl":"https://media1.tenor.com/m/qYlalc1KzQUAAAAC/disney-disney-plus.gif","heroVideoUrl":"","titleLogoUrl":"","coverImageUrl":"","catalogSources":[{"type":"movie","genre":null,"addonId":"aio-metadata","catalogId":"streaming.dnp"},{"type":"series","genre":null,"addonId":"aio-metadata","catalogId":"streaming.dnp"}],"focusGifEnabled":true,"heroBackdropUrl":""},{"id":"folder-3a01f6c6","title":"Apple TV+","sources":[{"type":"movie","genre":"None","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.atp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"None","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.atp","mediaType":null,"traktListId":null,"tmdbSourceType":null}],"hideTitle":true,"tileShape":"LANDSCAPE","coverEmoji":"","focusGifUrl":"https://media1.tenor.com/m/1FiEEnGTgUcAAAAC/apple-appletv.gif","heroVideoUrl":"","titleLogoUrl":"","coverImageUrl":"","catalogSources":[{"type":"movie","genre":null,"addonId":"aio-metadata","catalogId":"streaming.atp"},{"type":"series","genre":null,"addonId":"aio-metadata","catalogId":"streaming.atp"}],"focusGifEnabled":true,"heroBackdropUrl":""},{"id":"folder-51778daa","title":"Prime Video","sources":[{"type":"movie","genre":"None","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.amp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"None","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.amp","mediaType":null,"traktListId":null,"tmdbSourceType":null}],"hideTitle":true,"tileShape":"LANDSCAPE","coverEmoji":"","focusGifUrl":"https://media1.tenor.com/m/T7L_NCdPIvAAAAAC/prime-video.gif","heroVideoUrl":"","titleLogoUrl":"","coverImageUrl":"","catalogSources":[{"type":"movie","genre":null,"addonId":"aio-metadata","catalogId":"streaming.amp"},{"type":"series","genre":null,"addonId":"aio-metadata","catalogId":"streaming.amp"}],"focusGifEnabled":true,"heroBackdropUrl":""},{"id":"folder-cf0e794c","title":"Paramount+","sources":[{"type":"movie","genre":"None","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.pmp","mediaType":null,"traktListId":null,"tmdbSourceType":null},{"type":"series","genre":"None","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"streaming.pmp","mediaType":null,"traktListId":null,"tmdbSourceType":null}],"hideTitle":true,"tileShape":"LANDSCAPE","coverEmoji":"","focusGifUrl":"https://ingeniousguru.com/wp-content/uploads/2022/10/Paramount.gif","heroVideoUrl":"","titleLogoUrl":"","coverImageUrl":"","catalogSources":[{"type":"movie","genre":null,"addonId":"aio-metadata","catalogId":"streaming.pmp"},{"type":"series","genre":null,"addonId":"aio-metadata","catalogId":"streaming.pmp"}],"focusGifEnabled":true,"heroBackdropUrl":""},{"id":"folder-dad3f76f","title":"Dreamworks","sources":[{"type":"movie","genre":"None","title":null,"sortBy":null,"tmdbId":null,"addonId":"aio-metadata","filters":null,"sortHow":null,"provider":"addon","catalogId":"trakt.list.801242","mediaType":null,"traktListId":null,"tmdbSourceType":null}],"hideTitle":true,"tileShape":"LANDSCAPE","coverEmoji":"","focusGifUrl":"https://s13.gifyu.com/images/bqmmm.gif","heroVideoUrl":"","titleLogoUrl":"","coverImageUrl":"","catalogSources":[{"type":"movie","genre":null,"addonId":"aio-metadata","catalogId":"trakt.list.801242"}],"focusGifEnabled":true,"heroBackdropUrl":""}],"pinToTop":true,"viewMode":"TABBED_GRID","showAllTab":true,"backdropImageUrl":"","focusGlowEnabled":true}]</textarea>
+        
+        <button onclick="copyToClipboard('jsonText', this)">Copy JSON</button>
+        <br>
+        <button class="btn-secondary" onclick="goToStep(3)">Back</button>
+        <button onclick="goToStep(5)">Next</button>
+    </div>
+
+    <!-- STEP 5: Home Layout Checklist -->
+    <div id="step5" class="step">
+        <h2>Step 5: Home Layout Setup</h2>
+        <p>You're almost done! Please follow these exact steps to configure your Home Layout inside the Nuvio app.</p>
+        
+        <div class="navigation-steps">
+            <strong>Navigation:</strong><br>
+            1. Go back to <b>Content & Discovery Settings</b><br>
+            2. Navigate to <b>Home Layout</b>
+        </div>
+
+        <p>Make sure the following settings are strictly enabled or disabled according to this checklist:</p>
+
+        <div class="checklist">
+            <label><input type="checkbox"> Show Hero Selection <span class="status-enabled">(Enabled)</span></label>
+            <label><input type="checkbox"> Hide Unreleased Content <span class="status-enabled">(Enabled)</span></label>
+            <label><input type="checkbox"> Streaming Platform <span class="status-enabled">(Enabled)</span></label>
+            <label><input type="checkbox"> Series by Genre <span class="status-enabled">(Enabled)</span></label>
+            <label><input type="checkbox"> Popular - Movies <span class="status-disabled">(Disabled)</span></label>
+            <label><input type="checkbox"> Popular - Series <span class="status-disabled">(Disabled)</span></label>
+            <label><input type="checkbox"> Featured - Movies <span class="status-disabled">(Disabled)</span></label>
+            <label><input type="checkbox"> Featured - Series <span class="status-disabled">(Disabled)</span></label>
+            <label><input type="checkbox"> K-dramas - Latest - Series <span class="status-enabled">(Enabled)</span></label>
+            <label><input type="checkbox"> MyDramaList - Top KDramas 2025 - Series <span class="status-enabled">(Enabled)</span></label>
+            <label><input type="checkbox"> MyDramaList - Top KDramas All Time - Series <span class="status-enabled">(Enabled)</span></label>
+            <label><input type="checkbox"> Japanese Drama - Latest - Series <span class="status-enabled">(Enabled)</span></label>
+        </div>
+
+        <button class="btn-secondary" onclick="goToStep(4)">Back</button>
+        <button onclick="goToStep(6)">Finish Setup</button>
+    </div>
+
+    <!-- STEP 6: All Done (Restart App) -->
+    <div id="step6" class="step">
+        <h2>All Done! 🎉</h2>
+        <p>Your setup is officially complete.</p>
+        
+        <div class="highlight-box">
+            Please fully restart your Nuvio App to apply all the new Addons, Collections, and Layout changes.
+        </div>
+
+        <button class="btn-secondary" onclick="goToStep(5)">Back</button>
+        <button class="btn-success" onclick="closeTutorialTab()">Close Tutorial Tab</button>
+    </div>
+
+</div>
+
+<!-- JavaScript: This section makes the buttons and logic work -->
+<script>
+    // Function to hide all steps and show the one you want
+    function goToStep(stepNumber) {
+        const allSteps = document.querySelectorAll('.step');
+        allSteps.forEach(function(step) {
+            step.classList.remove('active');
+        });
+        document.getElementById('step' + stepNumber).classList.add('active');
+    }
+
+    // Advanced Copy function that changes the button text to "Copied!" 
+    function copyToClipboard(elementId, btnElement) {
+        const copyText = document.getElementById(elementId);
+        
+        // Select the text field
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); // For mobile devices
+
+        // Copy the text inside the text field
+        navigator.clipboard.writeText(copyText.value).then(() => {
+            // Change button appearance to show success
+            const originalText = btnElement.innerText;
+            const originalColor = btnElement.style.backgroundColor;
+            
+            btnElement.innerText = "Copied!";
+            btnElement.style.backgroundColor = "#27ae60"; // A nice green color
+
+            // Change it back after 2 seconds
+            setTimeout(() => {
+                btnElement.innerText = originalText;
+                btnElement.style.backgroundColor = originalColor;
+            }, 2000);
+
+        }).catch(err => {
+            alert("Failed to copy text. Please copy manually.");
+        });
+    }
+
+    // Function to attempt closing the browser tab
+    function closeTutorialTab() {
+        // Try to close the window
+        window.close();
+        
+        // Fallback alert: Browsers block window.close() if the script didn't open the tab itself
+        setTimeout(function() {
+            alert("You can now safely close this browser tab and return to the Nuvio App!");
+        }, 300);
+    }
+</script>
+
+</body>
+</html>
